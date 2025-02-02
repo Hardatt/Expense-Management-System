@@ -19,7 +19,7 @@ const app = express()
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cors({
-    origin : [""],
+    origin : ["https://expense-management-system-5v9q.vercel.app"],
     methods : ["POST","GET","PUT","DELETE"],
     credentials : true
 }));
