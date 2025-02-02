@@ -1,53 +1,85 @@
-import React,{useState,useEffect} from 'react'
-import {Form,Input,message} from 'antd'
-import { Link,useNavigate } from 'react-router-dom';
-import axios from 'axios'
-import Spinner from '../components/Spinner';
+import { useState, useEffect } from "react"
+import { Form, Input, message } from "antd"
+import { Link, useNavigate } from "react-router-dom"
+import axios from "axios"
+import "../styles/RegisterPage.css"
+import Spinner from "../components/Spinner"
+import { DollarSign, Eye, EyeOff } from "lucide-react"
+
 const Register = () => {
   const navigate = useNavigate()
-  const [loading,setLoading] =useState(false)
-  //Forn submit
+  const [loading, setLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+
+  // Form submit
   const submitHandler = async (values) => {
     try {
       setLoading(true)
-      await axios.post('/users/register',values)
-      message.success('Registeration Successfull')
+      await axios.post("/api/v1/users/register", values)
+      message.success("Registration Successful")
       setLoading(false)
-      navigate('/login')
+      navigate("/login")
     } catch (error) {
       setLoading(false)
-      message.error('something went wrong')
+      message.error("Something went wrong")
     }
-  };
-  //prevent for login user
+  }
+
+  // Prevent for logged-in user
   useEffect(() => {
-    if(localStorage.getItem('user')){
-      navigate('/')
+    if (localStorage.getItem("user")) {
+      navigate("/")
     }
   }, [navigate])
-  return (
-    <>
-   <div className='register-page'>
-    {loading && <Spinner />}
-    <Form layout='vertical'onFinish={submitHandler}>
-      <h1>Register Form</h1>
-      <Form.Item label='Name' name='name'>
-        <Input/>
-      </Form.Item>
-      <Form.Item label='Email' name='email'>
-        <Input type='email'/>
-      </Form.Item>
-      <Form.Item label='Password' name='password'>
-        <Input type='password'/>
-      </Form.Item>
-      <div className='d-flex justify-content-between'>
-        <Link to='/login'>Already Register ? Click Here to login</Link>
-        <button className='btn btn-primary'>Register</button>
-      </div>
-    </Form>
-   </div>
-    </> 
-  )
-};
 
-export default Register;
+  const togglePasswordVisibility = () => setShowPassword(!showPassword)
+
+  return (
+    <div className="register-container">
+      {loading && <Spinner />}
+      <div className="register-card">
+        <div className="card-header">
+          <div className="logo">
+            <DollarSign />
+          </div>
+          <h1>Create Account</h1>
+          <p>Join us to start managing your expenses</p>
+        </div>
+        <Form layout="vertical" onFinish={submitHandler} className="card-content">
+          <Form.Item label="Name" name="name" rules={[{ required: true, message: "Please input your name!" }]}>
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[{ required: true, type: "email", message: "Please input a valid email!" }]}
+          >
+            <Input type="email" />
+          </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: "Please input your password!" }]}
+          >
+            <div className="password-input">
+              <Input type={showPassword ? "text" : "password"} placeholder="Enter your password" />
+              <button type="button" onClick={togglePasswordVisibility} className="password-toggle">
+                {showPassword ? <EyeOff /> : <Eye />}
+              </button>
+            </div>
+          </Form.Item>
+          <button className="register-button" type="submit">
+            Register
+          </button>
+        </Form>
+        <div className="links">
+          <Link to="/login">Already registered? Click here to login</Link>
+        </div>
+        <p className="terms">By registering, you agree to our Terms of Service and Privacy Policy</p>
+      </div>
+    </div>
+  )
+}
+
+export default Register
+

@@ -1,0 +1,207 @@
+:root {
+  --primary-color: #6b46c1;
+  --primary-dark: #553c9a;
+  --accent-color: #f6ad55;
+  --background-start: #f0f5ff;
+  --background-end: #e6fffa;
+  --text-color: #2d3748;
+  --text-light: #4a5568;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+}
+
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("file:///E:/background1.jpg"); /* Same background image as login page */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Light or transparent overlay */
+.register-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2); /* Light overlay for better readability */
+  z-index: 1;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 600px; /* Wider form (increased from 450px to 600px) */
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 3rem; /* Increased padding */
+  position: relative;
+  z-index: 2;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  display: inline-block;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.logo svg {
+  width: 50px; /* Increased icon size */
+  height: 50px; /* Increased icon size */
+  color: white;
+}
+
+.card-header h1 {
+  font-size: 2.5rem; /* Larger heading */
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.card-header p {
+  color: var(--text-light);
+  font-size: 1.25rem; /* Larger subheading */
+}
+
+.card-content {
+  margin-bottom: 1.5rem;
+}
+
+/* Larger labels for Name, Email, and Password */
+.ant-form-item-label > label {
+  font-size: 1.75rem !important; /* Larger font size for labels */
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.ant-input {
+  border-radius: 8px;
+  border: 2px solid #e2e8f0;
+  padding: 1rem; /* Increased padding */
+  font-size: 1.25rem; /* Larger font size for input text */
+  transition: all 0.3s ease;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.2);
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+}
+
+.password-toggle svg {
+  width: 28px; /* Increased icon size */
+  height: 28px; /* Increased icon size */
+}
+
+.register-button {
+  width: 100%;
+  padding: 1rem; /* Increased padding */
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.5rem; /* Larger font size */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.register-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-button:active {
+  transform: translateY(0);
+}
+
+.links {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 1.1rem; /* Larger font size */
+}
+
+.links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.terms {
+  font-size: 0.875rem; /* Slightly larger font size */
+  color: var(--text-light);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 480px) {
+  .register-card {
+    max-width: 90%;
+    padding: 2rem;
+  }
+
+  .card-header h1 {
+    font-size: 2rem; /* Adjusted font size for mobile */
+  }
+
+  .card-header p {
+    font-size: 1rem; /* Adjusted font size for mobile */
+  }
+
+  .ant-form-item-label > label {
+    font-size: 1.5rem !important; /* Adjusted font size for mobile */
+  }
+
+  .ant-input {
+    font-size: 1rem; /* Adjusted font size for mobile */
+    padding: 0.75rem; /* Adjusted padding for mobile */
+  }
+
+  .register-button {
+    font-size: 1.25rem; /* Adjusted font size for mobile */
+    padding: 0.875rem; /* Adjusted padding for mobile */
+  }
+}

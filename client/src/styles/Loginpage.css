@@ -1,0 +1,200 @@
+:root {
+  --primary-color: #38a169;
+  --primary-dark: #2f855a;
+  --background-overlay: rgba(255, 255, 255, 0.2); /* Light overlay or transparent */
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("file:///D:/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Light or transparent overlay */
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background-overlay);
+  z-index: 1;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 600px; /* Increased width */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 3rem; /* Increased padding */
+  position: relative;
+  z-index: 2;
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dollar-symbol {
+  font-size: 3rem; /* Adjust the size of the dollar symbol */
+  color: var(--primary-color); /* Use the primary color for the dollar symbol */
+  font-weight: bold; /* Make it bold */
+  margin-right: 0.5rem; /* Add spacing between the symbol and the logo */
+}
+
+.card-header h1 {
+  font-size: 2.5rem; /* Larger font size for heading */
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  color: #2d3748;
+}
+
+.card-header p {
+  font-size: 1.25rem; /* Medium font size for subheading */
+  color: #4a5568;
+}
+
+/* Higher specificity for labels */
+.login-card .ant-form-item-label > label {
+  font-size: 1.75rem !important; /* Larger font size for labels ("Email" and "Password") */
+  color: #4a5568 !important;
+  font-weight: 500 !important;
+}
+
+.ant-input {
+  font-size: 1.25rem; /* Medium font size for input text */
+  padding: 1rem; /* Increased padding */
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(56, 161, 105, 0.2); /* Increased shadow */
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem; /* Increased spacing */
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #718096;
+}
+
+.password-toggle svg {
+  width: 28px; /* Increased icon size */
+  height: 28px; /* Increased icon size */
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem; /* Increased margin */
+  font-size: 1.25rem; /* Medium font size */
+  color: #4a5568;
+}
+
+.remember-me input {
+  margin-right: 0.75rem; /* Increased spacing */
+  width: 24px; /* Increased checkbox size */
+  height: 24px; /* Increased checkbox size */
+}
+
+.login-button {
+  width: 100%;
+  padding: 1rem; /* Increased padding */
+  font-size: 1.5rem; /* Medium font size */
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.login-button:hover {
+  background-color: var(--primary-dark);
+}
+
+.login-button:active {
+  transform: translateY(1px);
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem; /* Increased margin */
+  font-size: 1.1rem; /* Medium font size */
+}
+
+.links a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.links a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .login-card {
+    max-width: 90%; /* Adjusted for smaller screens */
+    padding: 2rem; /* Adjusted padding for mobile */
+  }
+
+  .card-header h1 {
+    font-size: 2rem; /* Adjusted font size for mobile */
+  }
+
+  .card-header p {
+    font-size: 1.1rem; /* Adjusted font size for mobile */
+  }
+
+  .login-card .ant-form-item-label > label {
+    font-size: 1.5rem !important; /* Adjusted font size for mobile */
+  }
+
+  .ant-input {
+    font-size: 1rem; /* Adjusted font size for mobile */
+    padding: 0.75rem; /* Adjusted padding for mobile */
+  }
+
+  .login-button {
+    font-size: 1.25rem; /* Adjusted font size for mobile */
+    padding: 0.75rem; /* Adjusted padding for mobile */
+  }
+}
