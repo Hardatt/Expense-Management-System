@@ -16,7 +16,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("file:///D:/background.jpg");
+  background-image: url("../logo/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

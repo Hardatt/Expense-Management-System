@@ -21,7 +21,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url("file:///E:/background1.jpg"); /* Same background image as login page */
+  background-image: url("../logo/background1.jpg"); /* Same background image as login page */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
