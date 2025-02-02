@@ -11,13 +11,18 @@ dotenv.config();
 //database call
 connectDb();
 
+
 //rest object
 const app = express()
 
 //middleware
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin : [""],
+    methods : ["POST","GET","PUT","DELETE"],
+    credentials : true
+}));
 
 //routes
 //user routes
