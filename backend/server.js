@@ -18,11 +18,7 @@ const app = express()
 //middleware
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors({
-    origin : ["https://expense-management-system-5v9q.vercel.app"],
-    methods : ["POST","GET","PUT","DELETE"],
-    credentials : true
-}));
+app.use(cors());
 
 //routes
 //user routes
